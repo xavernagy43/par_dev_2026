@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Kernel betöltése fájlból
 char* loadKernelSource(const char* filename) {
     FILE* file = fopen(filename, "r");
     if (!file) {

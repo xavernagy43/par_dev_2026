@@ -1,10 +1,10 @@
 __kernel void prime_check(__global const int* number,
                           __global int* flags) {
-    int divisor = get_global_id(0) + 2; // 2-tol kezdunk
+    int divisor = get_global_id(0) + 2;
 
     if (divisor < *number) {
         if (*number % divisor == 0) {
-            flags[0] = 1; // nem prim
+            flags[0] = 1;
         }
     }
 }
