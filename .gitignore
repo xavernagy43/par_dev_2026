@@ -58,3 +58,4 @@ dkms.conf
 .vscode/
 bin/
 obj/
+beadando/mandelbrot/test.txt
