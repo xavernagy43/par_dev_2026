@@ -9,8 +9,8 @@ namespace MandelbrotApp
     {
         static void Main(string[] args)
         {
-            int width = 1920;
-            int height = 1080;
+            int width = 2048;
+            int height = 1024;
             int maxIterations = 500;
             int workerGroup = 4;
 
@@ -27,9 +27,9 @@ namespace MandelbrotApp
 
             Stopwatch sw = Stopwatch.StartNew();
 
-            int[] data = mandelbrot.Generate(width, height, maxIterations, workerGroup);
+            //int[] data = mandelbrot.Generate(width, height, maxIterations, workerGroup);
 
-            //int[] data = mandelbrotCPU.Generate(width, height, maxIterations, workerGroup);
+            int[] data = mandelbrotCPU.Generate(width, height, maxIterations);
 
             sw.Stop();
 

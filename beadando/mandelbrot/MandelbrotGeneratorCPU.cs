@@ -4,13 +4,13 @@ namespace Mandelbrot
 {
     public class MandelbrotGeneratorCPU
     {
-        public int[] Generate(int width, int height, int maxIterations, int workerCount)
+        public int[] Generate(int width, int height, int maxIterations)
         {
             int[] result = new int[width * height];
             
             for (int y = 0; y < height; y++)
             {
-                for (int x = 0; i < width; x++)
+                for (int x = 0; x < width; x++)
                 {
                     double a = (x - width / 2.0) * 4.0 / width;
                     double b = (y - height / 2.0) * 4.0 / height;
@@ -28,9 +28,11 @@ namespace Mandelbrot
                         i++;
                     }
 
-                    result[y * width * x] = i;
+                    result[y * width + x] = i;
                 }
             }
+
+            return result;    
         }
     }
 }
