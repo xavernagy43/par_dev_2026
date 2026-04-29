@@ -19,11 +19,17 @@ namespace MandelbrotApp
             DateTime startTime = DateTime.Now;
             Console.WriteLine($"Kezdés ideje: {startTime}");
 
+            //GPU mandelbrot
             MandelbrotGenerator mandelbrot = new MandelbrotGenerator();
+
+            //CPU mandelbrot 
+            MandelbrotGeneratorCPU mandelbrotCPU = new MandelbrotGeneratorCPU();
 
             Stopwatch sw = Stopwatch.StartNew();
 
             int[] data = mandelbrot.Generate(width, height, maxIterations, workerGroup);
+
+            //int[] data = mandelbrotCPU.Generate(width, height, maxIterations, workerGroup);
 
             sw.Stop();
 
