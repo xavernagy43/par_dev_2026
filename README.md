@@ -12,11 +12,10 @@ C#-ban készült Mandelbrot-halmazon alapuló képgenerálás a választott fela
 
 **Mérések:**
 
+**1. Mérés: Futásidő vizsgálat workerGroup párhuzamosítással (azonos iteráció és felbontás mellett)**
+
 **Szekvenciálisan**
  **2048x1024 felbontásra: ~ 697 ms (ez az átlag marad végig amikor az iterációt és felbontást u.a. hagyjuk)** 
-
-
-**Iteráció és felbontás u.a.**
 
 | WorkerGroup | Iteráció | Felbontás     | Futásidő (ms) | Szekvenciális (ms) | Gyorsítás (ms) | Gyorsítás (%) |
 |-------------|----------|---------------|---------------|---------------------|----------------|---------------|
@@ -36,7 +35,7 @@ Ha a WorkerGroup méretét növeljük és az iterációt, felbontást ugyanakkor
 ![Futásidő (Iteráció és felbontás u.a.) oszlopdiagramm](beadando/mandelbrot/meas_images/meas1_1.png)
 ![Futásidő (Iteráció és felbontás u.a.) vonaldiagramm](beadando/mandelbrot/meas_images/meas1_2.png)
 
-**Felbontás és a workerGroup u.a.**	
+**2. Mérés: Futásidő vizsgálat különböző iterációval (azonos workerGroup és felbontás mellett)**
 
 | WorkerGroup | Iteráció | Felbontás   | Futásidő (ms) | Szekvenciális (ms) | Gyorsítás (ms) | Gyorsítás (%) |
 |-------------|----------|-------------|---------------|---------------------|----------------|---------------|
@@ -57,7 +56,7 @@ A párhuzamos megoldás ezzel szemben kevésbé érzékeny az iteráció növeke
 ![Futásidő (Felbontás és a workerGroup u.a.) oszlopdiagramm](beadando/mandelbrot/meas_images/meas2_1.png)
 ![Futásidő (Felbontás és a workerGroup u.a.) vonaldiagramm](beadando/mandelbrot/meas_images/meas2_2.png)
 
-**Iteráció és a workerGroup u.a.**
+**3. Mérés: Futásidő változása növekvő felbontással (azonos workerGroup és Iteráció mellett)**
 
 | WorkerGroup | Iteráció | Felbontás   | Futásidő (ms) | Szekvenciális (ms) | Gyorsítás (ms) | Gyorsítás (%) |
 |-------------|----------|-------------|---------------|---------------------|----------------|---------------|
