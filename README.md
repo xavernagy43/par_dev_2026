@@ -17,18 +17,20 @@ C#-ban készült Mandelbrot-halmazon alapuló képgenerálás a választott fela
 **Szekvenciálisan**
  **2048x1024 felbontásra: ~ 697 ms (ez az átlag marad végig amikor az iterációt és felbontást u.a. hagyjuk)** 
 
-| WorkerGroup | Iteráció | Felbontás     | Futásidő (ms) | Szekvenciális (ms) | Gyorsítás (ms) | Gyorsítás (%) |
-|-------------|----------|---------------|---------------|---------------------|----------------|---------------|
-| 1           | 500      | 2048x1024     | 854           | 697                 | -157           | -22.53%       |
-| 2           | 500      | 2048x1024     | 534           | 697                 | 163            | 23.39%        |
-| 4           | 500      | 2048x1024     | 392           | 697                 | 305            | 43.76%        |
-| 8           | 500      | 2048x1024     | 322           | 697                 | 375            | 53.80%        |
-| 16          | 500      | 2048x1024     | 266           | 697                 | 431            | 61.84%        |
-| 32          | 500      | 2048x1024     | 258           | 697                 | 439            | 63.00%        |
-| 64          | 500      | 2048x1024     | 241           | 697                 | 456            | 65.42%        |
-| 128         | 500      | 2048x1024     | 249           | 697                 | 448            | 64.27%        |
-| 256         | 500      | 2048x1024     | 250           | 697                 | 447            | 64.13%        |
-| 512         | 500      | 2048x1024     | 262           | 697                 | 435            | 62.41%        |
+## Teljesítmény összehasonlítás
+
+| WorkerGroup | Iteráció | Felbontás | Futásidő (ms) | Szekvenciális (ms) | Gyorsítás (S = T_seq / T_par) | Időmegtakarítás (ms) | Időmegtakarítás (%)|
+|-------------|----------|-----------|---------------|--------------------|-------------------------------|--------------------------------------|---------------------------------------------|
+| 1           | 500      | 2048x1024 | 854           | 697                | 0.82                          | -157                                 | -22.53%                                    |
+| 2           | 500      | 2048x1024 | 534           | 697                | 1.30                          | 163                                  | 23.39%                                     |
+| 4           | 500      | 2048x1024 | 392           | 697                | 1.78                          | 305                                  | 43.76%                                     |
+| 8           | 500      | 2048x1024 | 322           | 697                | 2.16                          | 375                                  | 53.80%                                     |
+| 16          | 500      | 2048x1024 | 266           | 697                | 2.62                          | 431                                  | 61.84%                                     |
+| 32          | 500      | 2048x1024 | 258           | 697                | 2.70                          | 439                                  | 63.00%                                     |
+| 64          | 500      | 2048x1024 | 241           | 697                | 2.89                          | 456                                  | 65.42%                                     |
+| 128         | 500      | 2048x1024 | 249           | 697                | 2.80                          | 448                                  | 64.27%                                     |
+| 256         | 500      | 2048x1024 | 250           | 697                | 2.79                          | 447                                  | 64.13%                                     |
+| 512         | 500      | 2048x1024 | 262           | 697                | 2.66                          | 435                                  | 62.41%                                     |
 
 Ha a WorkerGroup méretét növeljük és az iterációt, felbontást ugyanakkorára hagyjuk akkor látható, hogy a futásidő fokozatosan csökken. mindaddig amíg a group mérete nem kezd el túl nagy lenni. Érdemes megjegyezni,  hogy szekvenciális (CPU) futtatáshoz képest a GPU-s megoldás jelentős gyorsulást ad, mivel a pixelek számítása egymás után helyett párhuzamosan történik. Ez különösen a Mandelbrot esetében hatékony, mert minden pixel számítása független a többitől.
 
